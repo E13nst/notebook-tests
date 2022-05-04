@@ -30,15 +30,10 @@ public class ApiGetAllTest extends BaseTest {
         todoUser2Steps.removeAllTodo();
     }
 
-    @AfterEach
-    public void finish() {
-
-    }
-
     @Epic("TESTING FOR automation-interview-task-1.0 tasks")
-    @Feature(value = "get all test")
+    @Feature(value = "Todo test")
     @Severity(SeverityLevel.BLOCKER)
-    @Description("")
+    @Description("Получение списка всех записей пользователя, проверка, что записи недоступны для второго пользователя")
     @Story(value = "Get all todos")
     @Test
     public void testGetTodoList() {
@@ -53,15 +48,14 @@ public class ApiGetAllTest extends BaseTest {
         Assertions.assertEquals(count, getAllTodoList.size());
         // убедимся, что списки созданных и полученных записей совпадают
         Assertions.assertIterableEquals(createdTodoList, getAllTodoList);
-
         // Убедимся, что из под другого пользователя записи недоступны
         Assertions.assertEquals(0, todoUser2Steps.getAllTodoListSize());
     }
 
     @Epic("TESTING FOR automation-interview-task-1.0 tasks")
-    @Feature(value = "get all test")
-    @Severity(SeverityLevel.BLOCKER)
-    @Description("")
+    @Feature(value = "Todo test")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Получение списка всех записей пользователя, проверка, что записи недоступны без авторизации")
     @Story(value = "Get all todos unauthorized")
     @Test
     public void testGetTodoListUnauthorized() {
@@ -76,7 +70,6 @@ public class ApiGetAllTest extends BaseTest {
         Assertions.assertEquals(count, getAllTodoList.size());
         // убедимся, что списки созданных и полученных записей совпадают
         Assertions.assertIterableEquals(createdTodoList, getAllTodoList);
-
         // Убедимся, что из под другого пользователя записи недоступны
         Assertions.assertEquals(0, todoUser2Steps.getAllTodoListSize());
     }

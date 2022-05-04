@@ -21,11 +21,9 @@ public class Todo {
     public Todo() {
     }
 
-    // for create request body
     public Todo(String description) {
         this.description = description;
     }
-    // for remove request body
 
     public Todo(Integer id) {
         this.id = id;

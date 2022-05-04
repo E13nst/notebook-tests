@@ -8,10 +8,8 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import test.EndPoints;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +18,8 @@ import static io.restassured.RestAssured.given;
 public class TodoSteps {
 
     private final RequestSpecification requestSpec;
-//    private final User user;
 
-    private Map<String, String> cookies;
+    private final Map<String, String> cookies;
 
     public TodoSteps(String host, int port, Map<String, String> cookies) {
 
@@ -37,37 +34,6 @@ public class TodoSteps {
                 .log(LogDetail.ALL)
                 .build();
     }
-
-//    @Step(value = "Get cookies")
-//    public Map<String, String> getCookies() {
-//        return cookies;
-//    }
-
-//    @Step(value = "User login")
-//    public Response login() {
-//
-//        Response response = given()
-//                .spec(requestSpec)
-//                .body(user)
-//                .post(EndPoints.login);
-//
-//        cookies = response.getCookies();
-//
-//        return response;
-//    }
-
-//    @Step(value = "User logout")
-//    public Response logout() {
-//
-//        Response response = given()
-//                .spec(requestSpec)
-//                .cookies(cookies)
-//                .post(EndPoints.logout);
-//
-//        cookies = response.getCookies();
-//
-//        return response;
-//    }
 
     @Step(value = "Create new todo ang get result")
     public Response createTodo(Todo todo) {

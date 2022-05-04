@@ -7,7 +7,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import test.EndPoints;
 
 import java.util.Map;
 
@@ -31,8 +30,6 @@ public class AuthorizeSteps {
 
     @Step(value = "User login")
     public Response login(String username, String password) {
-
-        //        cookies = response.getCookies();
 
         return given()
                 .spec(requestSpec)

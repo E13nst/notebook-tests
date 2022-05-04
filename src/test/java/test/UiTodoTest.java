@@ -2,7 +2,6 @@ package test;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.LoginPage;
 import page.MainPage;
@@ -14,8 +13,8 @@ public class UiTodoTest extends BaseUiTest {
 
     @Epic("TESTING FOR automation-interview-task-1.0 tasks")
     @Feature(value = "UI test")
-    @Severity(SeverityLevel.BLOCKER)
-    @Description("")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Создание нескольких записей и удаление последней")
     @Story(value = "Create todo")
     @Test
     public void testUiCreateSomeTodoAndDeleteLast() {

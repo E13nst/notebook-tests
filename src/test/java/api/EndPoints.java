@@ -1,4 +1,4 @@
-package test;
+package api;
 
 public final class EndPoints {
     public static final String login = "/api/login";
