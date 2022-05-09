@@ -1,7 +1,10 @@
 package common;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.Random;
 
+@UtilityClass
 public class CommonUtils {
 
     public static String randomString(int targetStringLength) {
