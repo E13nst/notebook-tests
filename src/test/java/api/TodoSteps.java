@@ -25,7 +25,7 @@ public class TodoSteps {
 
         this.cookies = cookies;
 
-        this.requestSpec = new RequestSpecBuilder()
+        requestSpec = new RequestSpecBuilder()
                 .setBaseUri(host)
                 .setPort(port)
                 .setAccept(ContentType.ANY)

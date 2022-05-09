@@ -2,4 +2,5 @@
 .idea/
 allureReport.iml
 allure-results/
-build
+build/
+target/

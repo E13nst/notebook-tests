@@ -7,28 +7,26 @@ import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 /**
- * Страница логина
+ * Главная страница
  */
 public class MainPage {
 
-    private final SelenideElement input = $x("//input");
-    private final SelenideElement createButton = $x("//div[@class='create-form']/button");
-
-    private final ElementsCollection deleteButtonCollection = $$x("//div[@class='single-todo']/button");
-    private final ElementsCollection descriptionCollection = $$x("//div[@class='todo-description']");
-
     public void createTodo(String description) {
-        input.setValue(description);
-        createButton.click();
+        $x("//input").setValue(description);
+        $x("//div[@class='create-form']/button").click();
     }
 
     public ElementsCollection deleteTodo(int index) {
-        deleteButtonCollection.get(index).click();
-        return descriptionCollection;
+        $$x("//div[@class='single-todo']/button").get(index).click();
+        return $$x("//div[@class='todo-description']");
     }
 
     public ElementsCollection getDescriptions() {
-        return descriptionCollection;
+        return $$x("//div[@class='todo-description']");
+    }
+
+    public boolean exists() {
+        return $x("//div[@id='main-page']").exists();
     }
 
 

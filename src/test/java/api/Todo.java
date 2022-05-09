@@ -1,7 +1,6 @@
 package api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import common.CommonUtils;
 
 import java.util.Objects;
@@ -27,7 +26,7 @@ public class Todo {
     }
 
     public Todo randomDescription() {
-        this.description = CommonUtils.randomString(20);
+        description = CommonUtils.randomString(20);
         return this;
     }
 

@@ -3,11 +3,15 @@ package test;
 import api.TodoSteps;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import io.netty.handler.codec.http.cookie.Cookie;
+import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.*;
+
+import static org.hamcrest.Matchers.equalTo;
 
 public abstract class BaseUiTest extends BaseTest {
 
@@ -16,6 +20,8 @@ public abstract class BaseUiTest extends BaseTest {
 
     @BeforeAll
     public static void setup() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         todoUser1Steps = new TodoSteps(HOST, PORT, authorizeSteps.login(USERNAME_1, PASSWORD).getCookies());
         todoUser2Steps = new TodoSteps(HOST, PORT, authorizeSteps.login(USERNAME_2, PASSWORD).getCookies());
     }
