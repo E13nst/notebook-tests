@@ -1,8 +1,6 @@
 package test;
 
 import api.AuthorizeSteps;
-import api.TodoSteps;
-import api.User;
 
 public abstract class BaseTest {
 

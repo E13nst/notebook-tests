@@ -9,12 +9,20 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
+import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
 public class AuthorizeSteps {
 
     private final RequestSpecification requestSpec;
+
+    private Properties getUserProperties(String username, String password) {
+        Properties properties = new Properties();
+        properties.setProperty("username", username);
+        properties.setProperty("password", password);
+        return properties;
+    }
 
     public AuthorizeSteps(String host, int port) {
 
@@ -33,7 +41,7 @@ public class AuthorizeSteps {
 
         return given()
                 .spec(requestSpec)
-                .body(new User(username, password))
+                .body(getUserProperties(username, password))
                 .post(EndPoints.login);
     }
 
@@ -51,7 +59,7 @@ public class AuthorizeSteps {
 
         return given()
                 .spec(requestSpec)
-                .body(new User(username, password))
+                .body(getUserProperties(username, password))
                 .post(EndPoints.login)
                 .getCookies();
     }
