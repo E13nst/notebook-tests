@@ -3,7 +3,6 @@ package test;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
-import page.LoginPage;
 import page.MainPage;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -21,9 +20,6 @@ public class UiTodoTest extends BaseUiTest {
 
         int count = 8;
         int length = 20;
-
-        LoginPage loginPage = new LoginPage(BASE_URL);
-        loginPage.login(USERNAME_1, PASSWORD);
 
         MainPage mainPage = new MainPage();
 
