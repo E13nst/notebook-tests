@@ -45,4 +45,14 @@ public class AuthorizeSteps {
                 .cookies(cookies)
                 .post(EndPoints.logout);
     }
+
+    @Step(value = "Get cookies")
+    public Map<String, String> getCookies(String username, String password) {
+
+        return given()
+                .spec(requestSpec)
+                .body(new User(username, password))
+                .post(EndPoints.login)
+                .getCookies();
+    }
 }

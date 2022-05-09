@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static common.CommonUtils.randomString;
 import static io.restassured.RestAssured.given;
 
 public class TodoSteps {
@@ -48,7 +49,7 @@ public class TodoSteps {
     @Step(value = "Remove todo ang get response")
     public Response removeTodo(int id) {
 
-        Todo todo = new Todo(id);
+        Todo todo = Todo.builder().id(id).build();
 
         return given()
                 .spec(requestSpec)
@@ -88,7 +89,7 @@ public class TodoSteps {
         List<Todo> todoList = new ArrayList<>(count);
 
         for (int i = 0; i < count; i++) {
-            Response response = createTodo(new Todo().randomDescription());
+            Response response = createTodo(Todo.builder().description(randomString(20)).build());
             Todo todo = response.jsonPath().getObject("todo", Todo.class);
             todoList.add(todo);
         }

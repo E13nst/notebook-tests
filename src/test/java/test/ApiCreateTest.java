@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static common.CommonUtils.randomString;
 import static org.hamcrest.Matchers.equalTo;
 
 public class ApiCreateTest extends BaseTest {
@@ -58,7 +59,7 @@ public class ApiCreateTest extends BaseTest {
         Allure.addAttachment("description", description != null ? description : "null");
 
         int sizeBefore = todoUser1Steps.getAllTodoListSize();
-        Response response = todoUser1Steps.createTodo(new Todo(description));
+        Response response = todoUser1Steps.createTodo(Todo.builder().description(description).build());
 
         response
                 .then().assertThat().statusCode(200)
@@ -81,7 +82,7 @@ public class ApiCreateTest extends BaseTest {
     @Test
     public void testCreateTodoUnauthorized() {
 
-        Todo todo = new Todo().randomDescription();
+        Todo todo = Todo.builder().description(randomString(20)).build();
 
         int sizeBefore = todoUser1Steps.getAllTodoListSize();
 
@@ -101,7 +102,7 @@ public class ApiCreateTest extends BaseTest {
     @ParameterizedTest
     public void testCreateWithoutDescriptionField(String description) {
 
-        Todo todo = new Todo(description);
+        Todo todo = Todo.builder().description(description).build();
 
         int sizeBefore = todoUser1Steps.getAllTodoListSize();
 

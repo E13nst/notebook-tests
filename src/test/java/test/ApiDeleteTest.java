@@ -28,7 +28,7 @@ public class ApiDeleteTest extends BaseTest {
     public void start(){
         int count = 3;
         for (int i = 0; i < count; i++) {
-            todoUser1Steps.createTodo(new Todo().randomDescription());
+            todoUser1Steps.createTodo(Todo.builder().description(Todo.randomDescription()).build());
         }
     }
 
