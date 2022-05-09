@@ -9,13 +9,10 @@ import java.util.Objects;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Todo {
 
-    @JsonProperty("id")
     private Integer id;
 
-    @JsonProperty("personId")
     private Integer personId;
 
-    @JsonProperty("description")
     private String description;
 
     public Todo() {
