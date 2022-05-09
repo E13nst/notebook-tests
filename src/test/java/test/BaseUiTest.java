@@ -10,6 +10,7 @@ import io.netty.handler.codec.http.cookie.Cookie;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
+import page.LoginPage;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -24,6 +25,9 @@ public abstract class BaseUiTest extends BaseTest {
 
         todoUser1Steps = new TodoSteps(HOST, PORT, authorizeSteps.login(USERNAME_1, PASSWORD).getCookies());
         todoUser2Steps = new TodoSteps(HOST, PORT, authorizeSteps.login(USERNAME_2, PASSWORD).getCookies());
+
+        LoginPage loginPage = new LoginPage(BASE_URL);
+        loginPage.login(USERNAME_1, PASSWORD);
     }
 
     @AfterAll
